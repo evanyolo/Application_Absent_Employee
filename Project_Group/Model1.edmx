@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UasVisprogModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="loans">
+          <Key>
+            <PropertyRef Name="loans_ID" />
+          </Key>
+          <Property Name="loans_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_ID" Type="char" MaxLength="6" />
+          <Property Name="how_many" Type="int" />
+          <Property Name="descs" Type="text" />
+        </EntityType>
+        <EntityContainer Name="UasVisprogModelStoreContainer">
+          <EntitySet Name="loans" EntityType="Self.loans" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UasVisprogModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="loan">
+          <Key>
+            <PropertyRef Name="loans_ID" />
+          </Key>
+          <Property Name="loans_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_ID" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="how_many" Type="Int32" />
+          <Property Name="descs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="UasVisprogEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="loans" EntityType="Self.loan" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UasVisprogModelStoreContainer" CdmEntityContainer="UasVisprogEntities">
+          <EntitySetMapping Name="loans">
+            <EntityTypeMapping TypeName="UasVisprogModel.loan">
+              <MappingFragment StoreEntitySet="loans">
+                <ScalarProperty Name="loans_ID" ColumnName="loans_ID" />
+                <ScalarProperty Name="emp_ID" ColumnName="emp_ID" />
+                <ScalarProperty Name="how_many" ColumnName="how_many" />
+                <ScalarProperty Name="descs" ColumnName="descs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
